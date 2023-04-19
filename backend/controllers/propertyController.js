@@ -111,7 +111,7 @@ propertyController.put('/:id', verifyToken, async (req, res) => {
     try {
         const property = await Property.findById(req.params.id)
         if (property.currentOwner.toString() !== req.user.id) {
-            throw new Error("You are not allowed to update other people's properties")
+            throw new Error("You are not allowed to update other's properties")
         }
 
         const updatedProperty = await Property.findByIdAndUpdate(
@@ -156,7 +156,7 @@ propertyController.delete('/:id', verifyToken, async (req, res) => {
     try {
         const property = await Property.findById(req.params.id)
         if (property.currentOwner.toString() !== req.user.id) {
-            throw new Error("You are not allowed to delete other people properties")
+            throw new Error("You are not allowed to delete other's properties")
         }
 
         await property.delete()
