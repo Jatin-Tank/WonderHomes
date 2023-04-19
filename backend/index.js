@@ -20,14 +20,14 @@ mongoose.connect(process.env.MONGO_URL);
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use('/images', express.static('public/images'))
+// app.use('/images', express.static('public/images'))
 
 app.use("/auth", authController);
-app.use("/property", propertyController);
-app.use("/yacht", yachtController);
-app.use('/upload', uploadController)
-app.use('/user', userController)
-app.use('/comment', commentController)
+// app.use("/property", propertyController);
+// app.use("/yacht", yachtController);
+// app.use('/upload', uploadController)
+// app.use('/user', userController)
+// app.use('/comment', commentController)
 
 // starting server
 const port = process.env.PORT || 5000;
