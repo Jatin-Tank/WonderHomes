@@ -26,9 +26,10 @@ propertyController.get('/find/featured', async (req, res) => {
     }
 })
 
-// get all from type
+// get all from a specific type
 propertyController.get('/find', async (req, res) => {
     const type = req.query
+    // {type : 'Urban'}
     let properties = []
     try {
         if (type) {
@@ -43,7 +44,7 @@ propertyController.get('/find', async (req, res) => {
     }
 })
 
-// TODO FETCH TYPE OF PROPERTIES. EX: {BEACH: 34, MOUNTAIN: 23}
+// COUNT OF TYPE OF PROPERTIES. EX: {BEACH: 34, MOUNTAIN: 23}
 propertyController.get('/find/types', async (req, res) => {
     try {
         const beachType = await Property.countDocuments({ type: 'beach' })
@@ -110,7 +111,7 @@ propertyController.put('/:id', verifyToken, async (req, res) => {
     try {
         const property = await Property.findById(req.params.id)
         if (property.currentOwner.toString() !== req.user.id) {
-            throw new Error("You are not allowed to update other people's properties")
+            throw new Error("You are not allowed to update other's properties")
         }
 
         const updatedProperty = await Property.findByIdAndUpdate(
@@ -155,7 +156,7 @@ propertyController.delete('/:id', verifyToken, async (req, res) => {
     try {
         const property = await Property.findById(req.params.id)
         if (property.currentOwner.toString() !== req.user.id) {
-            throw new Error("You are not allowed to delete other people properties")
+            throw new Error("You are not allowed to delete other's properties")
         }
 
         await property.delete()

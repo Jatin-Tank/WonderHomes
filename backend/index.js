@@ -23,7 +23,7 @@ app.use(express.urlencoded({ extended: true }));
 // app.use('/images', express.static('public/images'))
 
 app.use("/auth", authController);
-// app.use("/property", propertyController);
+app.use("/property", propertyController);
 // app.use("/yacht", yachtController);
 // app.use('/upload', uploadController)
 // app.use('/user', userController)
