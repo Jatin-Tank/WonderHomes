@@ -26,9 +26,10 @@ propertyController.get('/find/featured', async (req, res) => {
     }
 })
 
-// get all from type
+// get all from a specific type
 propertyController.get('/find', async (req, res) => {
     const type = req.query
+    // {type : 'Urban'}
     let properties = []
     try {
         if (type) {
@@ -43,7 +44,7 @@ propertyController.get('/find', async (req, res) => {
     }
 })
 
-// TODO FETCH TYPE OF PROPERTIES. EX: {BEACH: 34, MOUNTAIN: 23}
+// COUNT OF TYPE OF PROPERTIES. EX: {BEACH: 34, MOUNTAIN: 23}
 propertyController.get('/find/types', async (req, res) => {
     try {
         const beachType = await Property.countDocuments({ type: 'beach' })
