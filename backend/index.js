@@ -24,8 +24,8 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/auth", authController);
 app.use("/property", propertyController);
+app.use('/upload', uploadController)
 // app.use("/yacht", yachtController);
-// app.use('/upload', uploadController)
 // app.use('/user', userController)
 // app.use('/comment', commentController)
 
