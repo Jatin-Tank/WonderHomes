@@ -3,7 +3,7 @@ import classes from './FeaturedProperties.module.css'
 import {Link} from 'react-router-dom' 
 
 import { request } from '../../util/fetchAPI'
-import img from '../../assets/estate3.jpg'
+import img from '../../assets/estate4.jpg'
 import person from '../../assets/person.jpg'
 import {FaBed,FaSquareFull} from 'react-icons/fa'
 
@@ -30,7 +30,7 @@ const FeaturedProperties = () => {
         </div>
         <div className={classes.featuredProperties}>
           {featuredProperties?.map((property)=>(
-             <div key={property._id} className={classes.featuredProperties}>
+             <div key={property._id} className={classes.featuredProperty}>
               <Link to={`/propertyDetail/${property._id}`} className={classes.imgContainer}>
                 <img src={img} alt=""/>
               </Link>

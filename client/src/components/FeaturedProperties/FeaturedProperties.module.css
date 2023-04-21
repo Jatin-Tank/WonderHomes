@@ -36,7 +36,7 @@
     gap: 2rem;
 }
 
-.featuredProperties > .featureProperty >.imgContainer{
+.featuredProperties > .featuredProperty >.imgContainer{
     display: inline-block;
     height: 350px;
     width: 80%;
@@ -45,18 +45,18 @@
     cursor: pointer;
 }
 
-.featuredProperties > .featureProperty >.imgContainer>img{
+.featuredProperties > .featuredProperty >.imgContainer>img{
     height: 100%;
     width: 100%;
     object-fit: cover;
     transition: 150ms all;
 }
 
-.featuredProperties > .featureProperty >.imgContainer>img:hover{
+.featuredProperties > .featuredProperty >.imgContainer>img:hover{
     scale:1.035;
 }
 
-.featureProperty .owner{
+.featuredProperty .owner{
     height: 35px;
     width: 35px;
     border-radius: 50%;
@@ -96,10 +96,10 @@
     color:#2c2cdc;
     padding-right: 1.25rem;
 }
-
+ 
 .moreDetails > span:last-child{
     border: none;
-}
+} 
 
 .desc{
     overflow: hidden;
