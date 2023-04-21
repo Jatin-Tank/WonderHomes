@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useState,useEffect } from 'react'
 import classes from './PropertyDetail.module.css'
+
+
 const PropertyDetail = () => {
+
   return (
-    <div>PropertyDetail</div>
+    <div className={classes.container}>
+      
+    </div>
   )
 }
 
