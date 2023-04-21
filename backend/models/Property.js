@@ -33,7 +33,7 @@ const PropertySchema = new mongoose.Schema({
     sqmeters: {
         type: Number,
         required: true,
-        // min: 15
+        min: 15
     },
     continent: {
         type: String,
@@ -43,15 +43,15 @@ const PropertySchema = new mongoose.Schema({
         type: Number,
         required: true,
         min: 1
-    }
+    },
     // bookmarkedUsers: {
     //     type: [String],
     //     default: []
     // },
-    // featured:{
-    //     type: Boolean,
-    //     default: false
-    // }
+    featured:{
+        type: Boolean,
+        default: false
+    }
 }, {timestamps: true})
 
 module.exports = mongoose.model("Property", PropertySchema)

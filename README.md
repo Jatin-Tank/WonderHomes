@@ -21,3 +21,5 @@ The following are some key features that will be implemented in the application:
 
 
 Overall, this project aims to provide a convenient and efficient way for real estate agents and rent seekers to manage properties and for buyers/rent seekers to find their ideal properties without leaving the comfort of their homes.
+
+
