@@ -17,8 +17,8 @@ const Navbar = () => {
           <li className={classes.listItem}> Contacts </li>
         </ul>
         <div className={classes.right}>
-          <Link to='/sign up'>Signup</Link>
-          <Link to='/sign in'>Signin</Link>
+          <Link to='/SignUp'>Sign Up</Link>
+          <Link to='/Login'>Log In</Link>
         </div>
 
       </div>
