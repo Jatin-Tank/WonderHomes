@@ -3,12 +3,14 @@ import React from 'react'
 import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { request } from '../../util/fetchAPI'
+
+
 
 export default function SignUp() {
 
     const [data, setData] = useState({
-		firstName: "",
-		lastName: "",
+		name: "",
 		email: "",
 		password: "",
 	});
@@ -22,21 +24,26 @@ export default function SignUp() {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const url = "http://localhost:8080/api/users";
-			const { data: res } = await axios.post(url, data);
-			navigate("/login");
-			console.log(res.message);
-		} catch (error) {
-			if (
-				error.response &&
-				error.response.status >= 400 &&
-				error.response.status <= 500
-			) {
-				setError(error.response.data.message);
+			// const url = "http://localhost:8080/api/users";
+			// const { data: res } = await axios.post(url, data);
+			const headers={
+				'content-type':"application/json"
 			}
+			const hi=await request('/auth/register','POST',headers,{... data})
+			navigate("/login");
+			console.log(hi);
+		} catch (error) {
+			// if (
+			// 	error.response &&
+			// 	error.response.status >= 400 &&
+			// 	error.response.status <= 500
+			// ) {
+			// 	setError(error.response.data.message);
+			// }
+			console.log(error)
 		}
 	};
-
+console.log(data);
 
 
   return (
@@ -56,14 +63,15 @@ export default function SignUp() {
 						<h1>Create Account</h1>
 						<input
 							type="text"
-							placeholder="First Name"
-							name="firstName"
+							placeholder="Name"
+							name="name"
+				 
 							onChange={handleChange}
-							value={data.firstName}
+							value={data.name}
 							required
 							className={styles.input}
 						/>
-						<input
+						{/* <input
 							type="text"
 							placeholder="Last Name"
 							name="lastName"
@@ -71,7 +79,7 @@ export default function SignUp() {
 							value={data.lastName}
 							required
 							className={styles.input}
-						/>
+						/> */}
 						<input
 							type="email"
 							placeholder="Email"

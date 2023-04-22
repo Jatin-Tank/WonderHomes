@@ -76,3 +76,18 @@
     font-size: 18px;
     cursor: pointer;
 }
+
+.right > .list{
+    padding: 0.25rem 0.5rem;
+    background-color: #2500ac;
+    color: #fff;
+    border-radius: 12px;
+    transition: 150ms all;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.right >.list:hover{
+    color: #efefef;
+    background-color:#340cb8;
+}
