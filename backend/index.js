@@ -13,7 +13,11 @@ const commentController = require("./controllers/commentController");
 
 // Mongodb connecting
 mongoose.set('strictQuery', false)
-mongoose.connect(process.env.MONGO_URL);
+mongoose.connect(process.env.MONGO_URL).then(() => {
+    console.log('MongoDb connection successful');
+}).catch(()=>{
+    console.log('MongoDb connectio Error');
+});
 
 
 // middlewares
