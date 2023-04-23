@@ -24,7 +24,7 @@ const Login = () => {
 				'content-type':'application/json'
 			}
 
-			const state= await request('/auth/login','POST',options,{email,password})
+			const state= await request('/auth/Login','POST',options,{email,password})
 			dispatch(Login(state))
 			navigate("/")
 		} catch (error) {
@@ -70,7 +70,7 @@ const Login = () => {
 				</div>
 				<div className={styles.right}>
 					<h1>New Here ?</h1>
-					<Link to="/signup">
+					<Link to="/auth/Signup">
 						<button type="button" className={styles.white_btn}>
 							Sign Up
 						</button>

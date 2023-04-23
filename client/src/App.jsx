@@ -27,8 +27,8 @@ function App() {
           <Footer/>
         </>
       }/>
-			<Route path="/SignUp" exact element={<SignUp />} />
-			<Route path="/Login" exact element={<Login />} />
+			<Route path="/auth/SignUp" exact element={<SignUp />} />
+			<Route path="/auth/Login" exact element={<Login />} />
       <Route path="/Properties" exact element={
         <>
           <Navbar/>

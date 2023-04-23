@@ -22,6 +22,7 @@ export default function SignUp() {
 	};
 
 	const handleSubmit = async (e) => {
+		// alert('handle submit');
 		e.preventDefault();
 		try {
 			// const url = "http://localhost:8080/api/users";
@@ -29,8 +30,8 @@ export default function SignUp() {
 			const headers={
 				'content-type':"application/json"
 			}
-			const hi=await request('/auth/register','POST',headers,{... data})
-			navigate("/login");
+			const hi=await request('/auth/SignUp','POST',headers,{...data})
+			navigate("/auth/Login");
 			console.log(hi);
 		} catch (error) {
 			// if (
@@ -52,14 +53,15 @@ console.log(data);
 			<div className={styles.signup_form_container}>
 				<div className={styles.left}>
 					<h1>Welcome Back</h1>
-					<Link to="/login">
+					<Link to="/auth/Login">
 						<button type="button" className={styles.white_btn}>
 							Sign in
 						</button>
 					</Link>
 				</div>
 				<div className={styles.right}>
-					<form className={styles.form_container} onSubmit={handleSubmit}>
+					<form className={styles.form_container}  onSubmit={handleSubmit}>
+					{/* <form className={styles.form_container}  action='/auth/SignUp' method='POST'> */}
 						<h1>Create Account</h1>
 						<input
 							type="text"

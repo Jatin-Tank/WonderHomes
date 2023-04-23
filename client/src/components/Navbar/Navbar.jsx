@@ -204,8 +204,8 @@ const Navbar = () => {
           <li className={classes.listItem}> Contacts </li>
         </ul>
         <div className={classes.right}>
-          <Link to='/SignUp'>Sign Up</Link>
-          <Link to='/Login'>Log In</Link>
+          <Link to='/auth/SignUp'>Sign Up</Link>
+          <Link to='/auth/Login'>Log In</Link>
           <Link onClick={()=> setShowForm(true)} className={classes.list}>List your property</Link>
 
         </div>
