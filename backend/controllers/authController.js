@@ -31,7 +31,7 @@ authController.post('/SignUp', async (req, res) => {
 })
 
 // Login
-authController.post("/login", async (req, res) => {
+authController.post("/Login", async (req, res) => {
   try {
     const user = await User.findOne({ email: req.body.email })
     if (!user) {
@@ -46,7 +46,7 @@ authController.post("/login", async (req, res) => {
 
     const { password, ...others } = user._doc
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '8d' })
-
+    
     return res.status(200).json({ others, token })
   } catch (error) {
     return res.status(500).json(error.message)

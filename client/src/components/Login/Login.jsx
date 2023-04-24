@@ -4,10 +4,16 @@ import { Link, useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
 import { request } from "../../util/fetchAPI";
 
+
+import {login} from "../../util/axiosAPI.js";
+// import {useDispatch} from 'react-redux'
+
 const Login = () => {
 	const navigate = useNavigate();
 	const [data, setData] = useState({ email: "", password: "" });
 	const [error, setError] = useState("");
+	//const dispatch = useDispatch();
+
 
 	const handleChange = ({ currentTarget: input }) => {
 		setData({ ...data, [input.name]: input.value });
@@ -15,27 +21,48 @@ const Login = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		try {
-			// const url = "http://localhost:8080/api/auth";
-			// const { data: res } = await axios.post(url, data);
-			// localStorage.setItem("token", res.data);
-			// window.location = "/";
-			const options={
-				'content-type':'application/json'
+		const successFunction = (res) => {
+			console.log(res.others);
+			if(res.others.email){
+				// dispatch({})
+				navigate('/')
 			}
 
-			const state= await request('/auth/Login','POST',options,{email,password})
-			dispatch(Login(state))
-			navigate("/")
-		} catch (error) {
-			if (
-				error.response &&
-				error.response.status >= 400 &&
-				error.response.status <= 500
-			) {
-				setError(error.response.data.message);
-			}
+
+			
 		}
+		const failureFunction = (err) => {
+			console.log(err)
+		}
+		login( data.email, data.password, successFunction, failureFunction)
+
+
+
+
+
+
+		// e.preventDefault();
+		// try {
+		// 	// const url = "http://localhost:8080/api/auth";
+		// 	// const { data: res } = await axios.post(url, data);
+		// 	// localStorage.setItem("token", res.data);
+		// 	// window.location = "/";
+		// 	const options={
+		// 		'content-type':'application/json'
+		// 	}
+
+		// 	const state= await request('/auth/Login','POST',options,{email,password})
+		// 	dispatch(Login(state))
+		// 	navigate("/")
+		// } catch (error) {
+		// 	if (
+		// 		error.response &&
+		// 		error.response.status >= 400 &&
+		// 		error.response.status <= 500
+		// 	) {
+		// 		setError(error.response.data.message);
+		// 	}
+		// }
 	};
 
 	return (
