@@ -4,6 +4,7 @@ import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { request } from '../../util/fetchAPI'
+import {signUp} from "../../util/axiosAPI.js";
 
 
 
@@ -22,7 +23,21 @@ export default function SignUp() {
 	};
 
 	const handleSubmit = async (e) => {
-		// alert('handle submit');
+		e.preventDefault();
+		const requestBody = JSON.stringify({
+			name: data.name,
+			email: data.email,
+			password: data.password
+		})
+		const successFunction = (res) => {
+			console.log(res)
+		}
+		const failureFunction = (err) => {
+			console.log(err)
+		}
+		signUp(requestBody, successFunction, failureFunction)
+
+		/*// alert('handle submit');
 		e.preventDefault();
 		try {
 			// const url = "http://localhost:8080/api/users";
@@ -42,7 +57,7 @@ export default function SignUp() {
 			// 	setError(error.response.data.message);
 			// }
 			console.log(error)
-		}
+		}*/
 	};
 console.log(data);
 
