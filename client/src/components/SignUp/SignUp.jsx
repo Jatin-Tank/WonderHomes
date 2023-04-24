@@ -9,8 +9,8 @@ import { request } from '../../util/fetchAPI'
 
 export default function SignUp() {
 
-    const [data, setData] = useState({
-		name: "",
+	const [data, setData] = useState({
+		username: "",
 		email: "",
 		password: "",
 	});
@@ -22,16 +22,34 @@ export default function SignUp() {
 	};
 
 	const handleSubmit = async (e) => {
+
+
+		// e.preventDefault();
+		// const formData = { username, email, password };
+		// const response = await fetch('/auth/SignUp', {
+		//   method: 'POST',
+		//   headers: { 'Content-Type': 'application/json' },
+		//   body: JSON.stringify(formData),
+		// });
+		// const data = await response.json();
+		// console.log(data);
 		// alert('handle submit');
 		e.preventDefault();
 		try {
 			// const url = "http://localhost:8080/api/users";
 			// const { data: res } = await axios.post(url, data);
-			const headers={
-				'content-type':"application/json"
+			const headers = {
+				'content-type': "application/json"
 			}
-			const hi=await request('/auth/SignUp','POST',headers,{...data})
-			navigate("/auth/Login");
+			const response = await fetch('/auth/SignUp', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(data),
+			});
+			const data = await response.json();
+			console.log(data);
+			// const hi=await request('/auth/SignUp','post',headers,{... data})
+			//	navigate("/auth/Login");
 			console.log(hi);
 		} catch (error) {
 			// if (
@@ -44,12 +62,14 @@ export default function SignUp() {
 			console.log(error)
 		}
 	};
-console.log(data);
+
+	// console.log(data);
 
 
-  return (
-    
-     <div className={styles.signup_container}>
+
+	return (
+
+		<div className={styles.signup_container}>
 			<div className={styles.signup_form_container}>
 				<div className={styles.left}>
 					<h1>Welcome Back</h1>
@@ -60,16 +80,16 @@ console.log(data);
 					</Link>
 				</div>
 				<div className={styles.right}>
-					<form className={styles.form_container}  onSubmit={handleSubmit}>
-					{/* <form className={styles.form_container}  action='/auth/SignUp' method='POST'> */}
+					<form className={styles.form_container} onSubmit={handleSubmit}>
+						{/* <form className={styles.form_container} method='post'> */}
 						<h1>Create Account</h1>
 						<input
 							type="text"
 							placeholder="Name"
-							name="name"
-				 
+							name="username"
+
 							onChange={handleChange}
-							value={data.name}
+							value={data.username}
 							required
 							className={styles.input}
 						/>
@@ -107,6 +127,6 @@ console.log(data);
 					</form>
 				</div>
 			</div>
-		</div> 
-  )
+		</div>
+	)
 }

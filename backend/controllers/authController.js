@@ -9,7 +9,9 @@ const jwt = require("jsonwebtoken")
 // Register
 // authController.post('/register', async (req, res) => {
 authController.post('/SignUp', async (req, res) => {
+  
   try {
+    console.log('ia am tarik');
     const isExisting = await User.findOne({ email: req.body.email })
 
     if (isExisting) {
